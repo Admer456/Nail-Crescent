@@ -245,7 +245,8 @@ void PMenu_Next(edict_t *ent)
 	i = hnd->cur;
 	p = hnd->entries + hnd->cur;
 	do {
-		i++, p++;
+		// WATISDEZE: Fixed misused comma separator, found by QwazzyWabbit here: https://github.com/QwazyWabbitWOS/openffa/commit/0e6cee9bca99fbfc669e0bdd9e078b509275ce91
+		i++; p++;
 		if (i == hnd->num)
 			i = 0, p = hnd->entries;
 		if (p->SelectFunc)
