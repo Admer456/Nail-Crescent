@@ -329,17 +329,18 @@ of server connections
 #define CONNECT_INSTANT     CONNECT_DELAY
 #define CONNECT_FAST        (CONNECT_DELAY - 1000u)
 
-typedef enum {
-    ca_uninitialized,
-    ca_disconnected,    // not talking to a server
-    ca_challenging,     // sending getchallenge packets to the server
-    ca_connecting,      // sending connect packets to the server
-    ca_connected,       // netchan_t established, waiting for svc_serverdata
-    ca_loading,         // loading level data
-    ca_precached,       // loaded level data, waiting for svc_frame
-    ca_active,          // game views should be displayed
-    ca_cinematic        // running a cinematic
-} connstate_t;
+// WATISDEZE: Moved to shared/shared.h for the cgame dll.
+// typedef enum {
+//     ca_uninitialized,
+//     ca_disconnected,    // not talking to a server
+//     ca_challenging,     // sending getchallenge packets to the server
+//     ca_connecting,      // sending connect packets to the server
+//     ca_connected,       // netchan_t established, waiting for svc_serverdata
+//     ca_loading,         // loading level data
+//     ca_precached,       // loaded level data, waiting for svc_frame
+//     ca_active,          // game views should be displayed
+//     ca_cinematic        // running a cinematic
+// } connstate_t;
 
 #define FOR_EACH_DLQ(q) \
     LIST_FOR_EACH(dlqueue_t, q, &cls.download.queue, entry)
@@ -598,6 +599,8 @@ void CL_CheckForPause(void);
 void CL_UpdateFrameTimes(void);
 qboolean CL_CheckForIgnore(const char *s);
 void CL_WriteConfig(void);
+connstate_t CL_GetState (void);              // WATISDEZE: Added for client game dll
+void        CL_SetState (connstate_t state); // WATISDEZE: Added for client game dll
 
 
 //

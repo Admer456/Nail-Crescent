@@ -21,6 +21,7 @@
 // Shared.
 #include "shared/shared.h"
 #include "shared/list.h"
+#include "shared/refresh.h"
 
 // // Common.
 // #include "common/cmodel.h"
@@ -37,7 +38,7 @@
 //
 //=============================================================================
 //
-
+extern clg_import_t clgi;
 
 //
 //=============================================================================

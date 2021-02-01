@@ -697,6 +697,28 @@ static void CL_Rcon_c(genctx_t *ctx, int argnum)
     Com_Generic_c(ctx, argnum - 1);
 }
 
+//
+//===============
+// CL_GetState
+// 
+// Returns the current state of the client.
+//===============
+//
+connstate_t     CL_GetState (void) {
+    return cls.state;
+}
+
+//
+//===============
+// CL_SetState
+// 
+// Sets the current state of the client.
+//===============
+//
+void CL_SetState (connstate_t state) {
+    cls.state = state;
+}
+
 /*
 =====================
 CL_ClearState
