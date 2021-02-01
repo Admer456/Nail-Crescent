@@ -98,6 +98,8 @@ typedef enum {
     PRINT_NOTICE        // print in cyan color
 } print_type_t;
 
+// WATISDEZE: We don't want these defined in clgame.h
+#ifndef CGAME_INCLUDE
 void    Com_LPrintf(print_type_t type, const char *fmt, ...)
 q_printf(2, 3);
 void    Com_Error(error_type_t code, const char *fmt, ...)
@@ -106,6 +108,8 @@ q_noreturn q_printf(2, 3);
 #define Com_Printf(...) Com_LPrintf(PRINT_ALL, __VA_ARGS__)
 #define Com_WPrintf(...) Com_LPrintf(PRINT_WARNING, __VA_ARGS__)
 #define Com_EPrintf(...) Com_LPrintf(PRINT_ERROR, __VA_ARGS__)
+
+#endif // CGAME_INCLUDE
 
 // game print flags
 #define PRINT_LOW           0       // pickup messages
@@ -1550,5 +1554,12 @@ typedef struct {
 
     short       stats[MAX_STATS];       // fast status bar updates
 } player_state_t;
+
+// WatIsDeze: Ifdef, for cgame dll.
+#ifdef CGAME_INCLUDE
+#include "common/cmodel.h"
+#include "common/cmd.h"
+#include "common/math.h"
+#endif // CGAME_INCLUDE
 
 #endif // SHARED_H
