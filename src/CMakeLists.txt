@@ -38,6 +38,7 @@ SET(SRC_SVGAME
 	svgame/g_lights.c
 	svgame/g_lock.c
 	svgame/g_main.c
+	svgame/g_maplist.c
 	svgame/g_misc.c
 	svgame/g_model.c
 	svgame/g_monster.c

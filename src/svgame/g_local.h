@@ -1111,21 +1111,29 @@ void Jet_ApplyJet( edict_t *ent, usercmd_t *ucmd );
 qboolean Jet_AvoidGround( edict_t *ent );
 void Jet_BecomeExplosion( edict_t *ent, int damage );
 #endif
+
 //
 // g_lights.c
 //
 void Lights();
 void ToggleLights();
+
 //
 // g_lock.c
 //
 void lock_digit_increment (edict_t *digit, edict_t *activator);
+
 //
 // g_main.c
 //
 void SaveClientData (void);
 void FetchClientEntData (edict_t *ent);
 void EndDMLevel (void);
+
+//
+// g_mapchange.c
+//
+void SVG_NextMap(void);
 
 //
 // g_misc.c

@@ -397,55 +397,8 @@ The timelimit or fraglimit has been exceeded
 */
 void EndDMLevel (void)
 {
-	edict_t		*ent;
-	char *s, *t, *f;
-	static const char *seps = " ,\n\r";
-
-	// stay on same level flag
-	if ((int)dmflags->value & DF_SAME_LEVEL)
-	{
-		BeginIntermission (CreateTargetChangeLevel (level.mapname) );
-		return;
-	}
-
-	// see if it's in the map list
-	if (*sv_maplist->string) {
-		s = strdup(sv_maplist->string);
-		f = NULL;
-		t = strtok(s, seps);
-		while (t != NULL) {
-			if (Q_stricmp(t, level.mapname) == 0) {
-				// it's in the list, go to the next one
-				t = strtok(NULL, seps);
-				if (t == NULL) { // end of list, go to first one
-					if (f == NULL) // there isn't a first one, same level
-						BeginIntermission (CreateTargetChangeLevel (level.mapname) );
-					else
-						BeginIntermission (CreateTargetChangeLevel (f) );
-				} else
-					BeginIntermission (CreateTargetChangeLevel (t) );
-				free(s);
-				return;
-			}
-			if (!f)
-				f = t;
-			t = strtok(NULL, seps);
-		}
-		free(s);
-	}
-
-	if (level.nextmap[0]) // go to a specific map
-		BeginIntermission (CreateTargetChangeLevel (level.nextmap) );
-	else {	// search for a changelevel
-		ent = G_Find (NULL, FOFS(classname), "target_changelevel");
-		if (!ent)
-		{	// the map designer didn't include a changelevel,
-			// so create a fake ent that goes back to the same level
-			BeginIntermission (CreateTargetChangeLevel (level.mapname) );
-			return;
-		}
-		BeginIntermission (ent);
-	}
+	// N&C: Moved all of this code over to g_mapchange.c
+	SVG_NextMap();
 }
 
 
