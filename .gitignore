@@ -34,9 +34,6 @@ cmake_install.cmake
 nac
 nacded 
 
-q2rtx
-q2rtxded
-
 out
 
 
