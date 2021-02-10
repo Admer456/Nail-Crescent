@@ -11,6 +11,24 @@
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "variables": []
+    },
+    {
+      "name": "x64-Debug",
+      "generator": "Ninja",
+      "configurationType": "Debug",
+      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "variables": [
+        {
+          "name": "CONFIG_VKPT_RENDERER",
+          "value": "False",
+          "type": "BOOL"
+        }
+      ]
     }
   ]
 }

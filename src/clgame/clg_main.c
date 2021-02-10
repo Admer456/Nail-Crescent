@@ -25,6 +25,16 @@ clg_import_t clgi;
 extern "C" {
 #endif
 
+void CLG_StartServerMessage(void) {
+
+}
+qboolean CLG_ParseServerMessage(int serverCommand) {
+
+}
+void CLG_EndServerMessage(int realTime) {
+
+}
+
 clg_export_t *GetClientGameAPI (clg_import_t *clgimp)
 {
     // Static export variable, lives as long as the client game dll lives.
@@ -142,4 +152,16 @@ void Com_Error (error_type_t code, char *fmt, ...) {
     vsnprintf(buffer, sizeof(buffer), fmt, args);
     clgi.Com_Error(code, "%s", buffer);
     va_end (args);
+}
+
+// This is mainly here to support shared/shared.c, do not use it yourself
+// unless you know what you are doing.
+// Prints a message of a type of your own liking. Using variable arg formatting
+void Com_LPrintf(print_type_t type, const char* fmt, ...) {
+    char buffer[MAX_STRING_CHARS];
+    va_list args;
+    va_start(args, fmt);
+    vsnprintf(buffer, sizeof(buffer), fmt, args);
+    clgi.Com_LPrintf(type, "%s", buffer);
+    va_end(args);
 }

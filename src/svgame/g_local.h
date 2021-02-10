@@ -1127,6 +1127,8 @@ void lock_digit_increment (edict_t *digit, edict_t *activator);
 //
 // g_main.c
 //
+edict_t* CreateTargetChangeLevel(char* map);
+
 void SaveClientData (void);
 void FetchClientEntData (edict_t *ent);
 void EndDMLevel (void);

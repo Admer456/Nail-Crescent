@@ -379,8 +379,8 @@ void	ServerCommand (void)
 void SVCmd_NextMap_f (void) 
 {
 	//BeginIntermission(CreateTargetChangeLevel(level.mapname));
-	//SVG_NextMap();
-	safe_cprintf (NULL, PRINT_HIGH, "%s SVCmd_NextMap_f!\n", level.mapname);
+	SVG_NextMap();
+	//safe_cprintf (NULL, PRINT_HIGH, "%s SVCmd_NextMap_f!\n", level.mapname);
 }
 
 

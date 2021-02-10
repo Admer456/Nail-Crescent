@@ -369,6 +369,7 @@ void CL_PrepRefresh(void)
         if (name[0] == '#') {
             continue;
         }
+        Com_Printf("file: %s \n", name);
         cl.model_draw[i] = R_RegisterModel(name);
     }
 
